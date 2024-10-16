@@ -5,9 +5,7 @@
 
 ## 课程目标 
 - dive into details, starts to see, in much more depth, how these learning algorithm actually work in practice.
-- 目标 2
-- 目标 3
-
+  
 ## Image classification
 ### 1. Chanllenges
 - Viewpoint variation: different viewpoint of same object, got a completely different pixels.
@@ -22,8 +20,7 @@
 2. use Machine Learning to train a classifier
 3. Evaluate the classifier on new images
 
-#### simple classifier
-##### Nearest Neighbor 
+### Nearest Neighbor 
 - Train: memorize all data and labels
 - Predict: predict the label of the most similar training image.
 - How to compare, define similarity: L1 distance.
@@ -32,7 +29,7 @@
 -   1. fast train process & slow predict process : With N examples, training: O(1), predict: O(n); *We can accept slow train and fast predict*.
     2. 
 
-##### K-Nearest Neighbors
+### K-Nearest Neighbors
 1. take majority vote from K closest points.
 2. distance function: specify different distance metrics, KNN can be applied very generally to basically any type of data.
 - L1 distance depends on the choice of coordinates systems.(sort of coordinate dependent)
