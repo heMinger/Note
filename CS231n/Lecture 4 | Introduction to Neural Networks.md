@@ -2,7 +2,7 @@
 
 ## Date: 23/10/24
 writer: heming \
-note: I didn't save my notes, so it's all gone. It hurts but I won't rewrite it.
+note: I didn't save notes I had written, so it's all gone. It hurts but I won't rewrite it.
 
 ## backpropagation
 compute the gradient we need for arbitrarily complex functions.
