@@ -63,4 +63,31 @@ $$
 - Use ReLU. Be careful with learning rates.
 - Try out Leaky ReLU/ Maxout/ ELU
 - Try out tanh but don't expect much
-- Don't use sigmoid.
+- Don't use sigmoid. 
+
+### Data Pre process
+1. zero-centered data
+2. normalized data
+- don't do it for images. 'cause pixels already have relatively comparable scale and distribution.
+- always use in more generalizational problem where you might have different features that are very different of very different scales.
+3. PCA
+- don't do it for images.
+4. Whitening
+- don't do it for images.
+5. In practice for images: **center only** for both train and test data.
+- sigmoid needs zero-mean input, but the center operation only satisty the input of first layer, and it's gonna be lots of nonzero mean problems later on. So it's not sufficient to solve the problem of sigmoid.
+### Weight Initialization
+1. Q: What happens when W=0 init is uesd?
+A: every neurons have the same operation basically on top of inputs. all same outputs -> all same gradient back -> all update in the same way -> exactly all same neurons.
+2. First Idea: small random numbers.
+- okay for small networks, but problems with deeper networks. deeper network after few iteration, all activations become zero.
+- Q: think about the backward pass. What do the gradients look like? \
+multiplication of the upstream gradient by our weights.
+3. big initialization -> saturate
+4. Reasonable initialization:
+- Xavier initialization
+```
+W = np.random.randn(fan_in, fan_out) / np.sqrt(fan_in) # layer initialization
+```
+the variance of input to be the same of the variance of output.
+5. 
