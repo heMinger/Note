@@ -1,4 +1,4 @@
-# Training Neural Networks I
+# Training Neural Networks I *
 
 ## Date: 29/10
 writer: Minghe Li
@@ -86,8 +86,22 @@ multiplication of the upstream gradient by our weights.
 3. big initialization -> saturate
 4. Reasonable initialization:
 - Xavier initialization
+- 
 ```
 W = np.random.randn(fan_in, fan_out) / np.sqrt(fan_in) # layer initialization
 ```
-the variance of input to be the same of the variance of output.
-5. 
+- the variance of input to be the same of the variance of output.
+- when using the ReLU nonlinearity it breaks. because killing the half of the units,  it's halving the variance that you get out of this.
+
+### Batch Normalization
+- motivation: we want unit gaussian activation.
+- 
+![image](https://github.com/user-attachments/assets/8f6bb489-1220-4321-9135-5386312ebaf8)
+- for each layer, we can have unit gaussian and hopefully during training this will preserve this.
+- if **N** samples for this batch, each batch has dimension **D**
+- ![image](https://github.com/user-attachments/assets/d5496a8b-640a-439b-a062-e63526d2b509)
+- position: usually insert after fully connected or convolutional layers, and before nonlinearity.
+- with a *convolutional layer*: (one mean + one standard deviation) per activation map, nomolize this across all of the examples in the batch.
+- summary ![image](https://github.com/user-attachments/assets/b04cfd9f-f54e-4566-9a5a-ade4df6a30ea)
+## Training Dynamics
+### Babysitting the Learning Process 
