@@ -1,6 +1,6 @@
 # Training Neural Networks I *
 
-## Date: 29/10
+## Date: 29-30/10
 writer: Minghe Li
 
 ## Overview
@@ -105,3 +105,4 @@ W = np.random.randn(fan_in, fan_out) / np.sqrt(fan_in) # layer initialization
 - summary ![image](https://github.com/user-attachments/assets/b04cfd9f-f54e-4566-9a5a-ade4df6a30ea)
 ## Training Dynamics
 ### Babysitting the Learning Process 
+![image](https://github.com/user-attachments/assets/29300ae0-cf9a-41d7-a034-02e989850765)
