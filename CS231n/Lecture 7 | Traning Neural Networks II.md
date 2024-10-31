@@ -81,4 +81,5 @@ sort of like RMSProp with momentum
 - at test time: multiply by dropout probability.
 4.Data Augmentation
 - randomly transform the image in some way during training
-5.  
+
+### Transfer Learning
