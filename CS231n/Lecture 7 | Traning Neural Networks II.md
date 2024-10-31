@@ -41,3 +41,44 @@ steps gets smaller and smaller. when convex, it's a feature; but when non-convex
 ### RMSProp
 variation of AdaGrad \
  ![image](https://github.com/user-attachments/assets/cd02ba80-65a9-41f2-86de-a37d82f8fc13)
+### Adam
+sort of like RMSProp with momentum
+![image](https://github.com/user-attachments/assets/b42045aa-b158-4c22-ab19-6fde54f624c1)
+1. Q: What happens at first timestep?
+- second_moment set to 0 at first, so second_moment is very small, so x takes a large step.
+2. Adam with bias, so we can limit the step size it takes at first.
+![image](https://github.com/user-attachments/assets/ca48a46e-129f-4a86-80ca-64c626abc3e5)
+3. exprical value
+- beta1 = 0.9
+- beta2 = 0.999
+- learning rate = 1e-3 or 5e-4
+### Learning Rate
+1. start at a large learning rate and  decay over time
+2. step decay: decay learning rate by half every few epochs.
+3. exponential decay: $\alpha = \alpha _0 e^{-kt}$
+4. $1/t$ decay: $\alpha = \alpha _0 /(1+kt)$
+5. more common with SGD momentum and a little bit less common with other things like atom.
+6. learning rate decay is the second order optimization, at first, you want to it go with the normal learning rate. You can keep an eye on it, if the loss wave, you could decay the learning rate.
+
+### Model Ensembles
+1. train multiple independent models. keep multiple snapshots of model during the course of training and use these as assembles.
+2. at test time average results from all models
+3. tips and tricks: instead of using actual parameter vector, keep a moving average of the parameter vector and use that at test time.
+### Regularization
+*improve them performance of single model*
+1. add something to our model, to prevent it from fitting the training data too well, and attempts to make it perform beter on unseen data.
+2. different methods
+- ![image](https://github.com/user-attachments/assets/4420e1e9-6273-49a2-b85d-4653a24ca242)
+
+3. *Dropout*
+- for neural network
+- in each forward pass, randomly set some neurons to zero.
+- usually fully connected layer,
+- and perhaps convolutional layers as well,  but in convolutional layers, sometimes just drop out some feature maps, some entire channels.
+- why reasonable
+(1) helps prevent co-adaptation of features. \
+(2) kind of like doing model ensemble within a single model.
+- at test time: multiply by dropout probability.
+4.Data Augmentation
+- randomly transform the image in some way during training
+5.  
