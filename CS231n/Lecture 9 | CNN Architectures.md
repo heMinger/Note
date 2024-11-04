@@ -68,3 +68,24 @@ writer: MingheLi
 2. details
 ![image](https://github.com/user-attachments/assets/3c916c2a-81f8-419a-b61d-ca37cd513fab)
 3. Inception module
+- motivation: want to design a good local network typology, satck a lot of typologies one on top of each other.
+- ![image](https://github.com/user-attachments/assets/0ae6ffc3-2057-409a-a99b-ab81498f45d0)
+- What's the problem with this?\
+(1) computational complexity
+![image](https://github.com/user-attachments/assets/e361f428-3c02-4060-aa19-06acd9c3f557)
+![image](https://github.com/user-attachments/assets/369f27a3-854b-4487-9215-0cf3fd0de40c)
+4. 1*1 Convolutions: preserve spatial dimensions, reduce depth
+5. dimension reduction
+- ![image](https://github.com/user-attachments/assets/d101da76-ce33-4a33-ba3e-b06b1f728f4b)
+## ResNet
+1. very deep networks using residual connections.
+2. when we continue stacking deeper layers on a "plain" convolutional neural network, 56-layer networks perform worse than 20-layer network both on training dataset and test dateset, so it's not caused by over-fitting.
+3. solution: Residual block
+ ![image](https://github.com/user-attachments/assets/be8b094e-2d27-4ed2-9eaf-ecb950351426)
+- it's hard to learn H(x), so we turn ti learn what is it that we need to add or subtract(F(x)) to our input(x) as we move on to the next layer. so, F(x) is residual, is what we learn and modify on x, to approximate H(x).
+4. Full ResNet architecture:
+- stack residual blocks
+- every residual block has two 3*3 conv layers.
+- periodically, double number of filters and downsample spatially using stride 2.
+- additional conv layer at the beginning
+- no FC layer at the end. only FC 1000
