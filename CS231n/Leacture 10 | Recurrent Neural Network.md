@@ -76,4 +76,7 @@ In practice, we got distribution and sample. Sometimes we just take the argmax p
 ```diff
 - what does sample mean? our vocabulary? chars in our vocabulary?
 ```
+- Q: at test time, could we feed in this softmax vector rather than a one hot vector?\
+(1) In general, if you ask your model to do some different things at test time from traning time, it'll usually blow up. It'll usually give you garbage.\
+(2) In practice, vocabularies might be very large. If you're thinking about generating words one at a time, your vocabulary is every word in the english language,, which could be tens of thousands of elements. So, in practice, we take this one hot vector, which is **sparse vector operations**, rather than dense factors.
 - 
