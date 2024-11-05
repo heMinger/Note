@@ -108,3 +108,17 @@ In practice, we got distribution and sample. Sometimes we just take the argmax p
 - each time step, compute distribution over all scores in vocabulary, and sample from that distribution, and pass that word back as input at the next time step.
 - after all these steps, we'll generate this complete sentence.
 - and stop generation once we sample the special ends token.
+### Image Captioning with Attention
+![image](https://github.com/user-attachments/assets/ee0b32eb-d4a6-41c0-9562-318757db3c9d)
+*compare with Image Caption*
+1. CNN summarize the entire image, it produces some **grid of vectors** that give maybe one vector for each spatial location in the image, rather than produces a single vector.
+2. forward part of RNN model: in addition to sampling the vocabulary at every time step, it also produces a **dirtribution over locations** in the image where it wants to look.
+3. distribution over image locations can be seen as a kind of a tension of where the model should look during training.
+4. distribution over image locations weill go back to the set of vectors to give a single summary vector. And summary vector gets fed, as an additional input at the next time step of neural network.
+5. each time, hidden layer produce two outputs. One is our distribution over vocabulary words, and the orther is a distribution over image locations.
+6. result: its attention is shiffting around different parts of the image for each word in the caption that it generates. (shown in below)
+![image](https://github.com/user-attachments/assets/87a07cc3-fdfe-4a21-b355-90f793d26f30)
+```diff
+- so, the meaning of attention is just attention? is the area we focus of the image?
+```
+7. 
