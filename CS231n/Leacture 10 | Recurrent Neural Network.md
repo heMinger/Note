@@ -3,6 +3,9 @@
 # Date: 4/11-5/11
 writer: Minghe Li
 
+## TODO
+1. min-char-rnn.py
+
 ## cool pitch about cool things that RNN can do
 1. previous networks: vanilla feed forward network. recieve some fixed size input, like image an or vector. That image is fed through some set of hidden layers, and produce a single output.
 2. we want: input more flexibility.
@@ -79,4 +82,18 @@ In practice, we got distribution and sample. Sometimes we just take the argmax p
 - Q: at test time, could we feed in this softmax vector rather than a one hot vector?\
 (1) In general, if you ask your model to do some different things at test time from traning time, it'll usually blow up. It'll usually give you garbage.\
 (2) In practice, vocabularies might be very large. If you're thinking about generating words one at a time, your vocabulary is every word in the english language,, which could be tens of thousands of elements. So, in practice, we take this one hot vector, which is **sparse vector operations**, rather than dense factors.
+
+### truncated Backpropagation through time
+1. previous: if we train on Wikipedia, every time made a gradient step, make a forward pass through the entire text of all of wikipedia, and then make a backward pass through all of wikipedia, and then make a single gradient update. That would be super **slow**, and model would never converge. And it would take a ridiculous amount of **memory**.
+2. approximation called truncated backpropagation through time.
+- even though our input sequence is very long, when we're training the model,
+- we'll step forward some number of steps, maybe 100,
+- compute a loss only over this sub sequence of the data, and take back propagate through this sub sequence
+- and now, when we repeat, we still have these hidden states that we computed from the first batch
+- when we compute this next batch of data, we will carry those hidden states forwward in time,
+- so the forward pass will be exactly the same.
+```diff
+- I'm not get it.
+```
+- In general, it's expensive to compute the gradients when we train on large dataset. So instead, we take small mini batches, and use mini batches of data to compute gradient stops.
 - 
