@@ -157,3 +157,12 @@ In practice, we got distribution and sample. Sometimes we just take the argmax p
 3. use updated cell state to compute a hidden state.
 - $tanh(c_t)$: because this cell state has this interpretation of being counters, we want to squash that counter value into a nice zero to one range using a tanh.
 - $o*tanh(c_t)$: o can be though of it as being mostly zeros and ones, and the multiplication tells us for each element of our cell state, do we want to **reveal or not reveal** that element of our cell state when we're computing the external hidden state for this time step.
+
+#### back propogation
+![image](https://github.com/user-attachments/assets/6c0201e1-c9c4-46ae-8c71-a87ac95c217f)
+1. when we have our upstream gradient form the cell coming in, then once we backpropagate backwards through this addition operation, our upstream gradient get copied directly and passed directly to backpropagating through this elemnent wise multiply
+2. advantage1: this forget gate is now an element wise multiplication rather than a full matrix multiplication. So element wise multiplication is going to be a little bit nicer than fully matrix multiplication.
+3. advantage2: element wise multiplication will potentially be mutiplying by a **different forget gate** at every time step. But in vanilla RNN, we were continually multiplying by that same weight matrix over and over again, which led very explicitly to these exploding or vanishing gradients.
+4. vanilla RNN, our gradients were flowing through a tanh at every time step. But in an LSTM, we only backpropagate through a single tanh non linearity.
+ ![image](https://github.com/user-attachments/assets/a91a41f6-e8a1-43a8-a745-55b14624fe40)
+
