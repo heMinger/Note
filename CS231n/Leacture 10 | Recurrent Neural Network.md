@@ -121,4 +121,4 @@ In practice, we got distribution and sample. Sometimes we just take the argmax p
 ```diff
 - so, the meaning of attention is just attention? is the area we focus of the image?
 ```
-7. 
+7.  
