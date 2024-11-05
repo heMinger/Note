@@ -1,6 +1,6 @@
 # Recurrent Neural Network
 
-# Date: 4/11
+# Date: 4/11-5/11
 writer: Minghe Li
 
 ## cool pitch about cool things that RNN can do
@@ -40,5 +40,40 @@ writer: Minghe Li
 ```diff
 final gradient for W will be the **sum** of all of those individual per time step gradients.
 - I thought it is product
+```
+## 
+### sequence to sequence: many to one + one to many
+1. many to one: encode input sequence in a single vector
+2. one to many: produce output sequence from single input vector
+### example: character-level language model
+1. vocabulary: [h, e, l, o]
+2. example training sequence: "hello"
+3. ![image](https://github.com/user-attachments/assets/7874657d-f432-4b83-8bbb-6306b12ec51b)
+- step time 1:\
+(1) input chars: "h" \
+(2) object: "e". \
+(3) input layer: [1, 0, 0, 0]. (because vocabulary is [h, e, l, o]) \
+(4) output layer: [1.0, 2.2, -3.0, 4.1]. -> "o" \
+- step time 2: \
+(1) input chars: "e" \
+(2) object: "l". \
+(3) input layer: [0, 1, 0, 0]. (because vocabulary is [h, e, l, o]) \
+(4) output layer: [0.5, 0.3, -1.0, 1.2]. -> "o" \
+- step time 3: \
+(1) input chars: "l" \
+(2) object: "l". \
+(3) input layer: [0, 0, 1, 0]. (because vocabulary is [h, e, l, o]) \
+(4) output layer: [0.1, 0.5, 1.9, -1.1]. -> "l" \
+- step time 4: \
+(1) input chars: "l" \
+(2) object: "o". \
+(3) input layer: [0, 0, 1, 0]. (because vocabulary is [h, e, l, o]) \
+(4) output layer: [0.2, -1.5, -0.1, 2.2]. -> "o" \
+4. test time: sample characters one at a time, feed back to model.
+![image](https://github.com/user-attachments/assets/400f9717-1a57-485d-8de4-df6032542098)
+- Q: **why might we sample, instead of just taking the character with the largest score?** \
+In practice, we got distribution and sample. Sometimes we just take the argmax probability, and that will sometimes be a little bit more stable. But one advantage of sampling, in general, is that it lets you get diversity from models. Sometimes we might have the same input, maybe the same prefix, or in the case of image captioning, maybe the same image. But then if you smaple rather than taking the argmax, you'll see that sometimes these trained models are actually able to produce multiple different types of reasonable output sequences, depending on which samples they take at the first time steps. It's a benefit, cause we can get now more diversity in outputs.
+```diff
+- what does sample mean? our vocabulary? chars in our vocabulary?
 ```
 - 
