@@ -121,4 +121,39 @@ In practice, we got distribution and sample. Sometimes we just take the argmax p
 ```diff
 - so, the meaning of attention is just attention? is the area we focus of the image?
 ```
-7.  
+### vanilla RNN gradient flow
+![image](https://github.com/user-attachments/assets/5ec78667-83f2-414d-ad8a-9e16cf4eb89a)
+1. computing gradient of $h_0$ involves many factors of W and repeated tanh
+2. if largest singular value > 1: exploding gradients
+- solution: gradient clippingL sacle gradient if its norm is too big.
+4. if largest singular value < 1: vanishing gradients
+
+### LSTM
+1. designed to help alleviate this problem of vanishing and explodin gradients. try to design the architecture to have better gradient flow properties.
+![image](https://github.com/user-attachments/assets/f4743875-e679-46d3-8dbd-e5a62755050b)
+3. two hidden states at every time setp, $h_t$ and $c_t$
+4. $c_t$: cell state: is the vector which is kind of internal, kept inside the LSTM,
+- four gates: \
+(1) f(forget gate): whether to erase cell \
+(2) i(input gate): whether to weite cell \
+(3) g(gate gate): how much to write to cell \
+(4) o(output gate): how much to reveal cell
+- use gates to update cell states.
+- expose part of cell state as the hidden state at the next time step.
+#### why does it make sense
+1. first thing we do in an LSTM: take previoud hidden state and current input and stack them, then multiply by a very big weight matrix, w, to compute four different gates, which all have the same size as the hidden state.
+- i, input gate, it says how much do we want to input to oue cell
+- f, forget gate, it says how much do we want to forget the cell memory from the previous time step.
+- o, output gate, it says how much do we want to reveal ourself to the outside world.
+- g, gata gate, it says how much do we want to write into our input cell.
+- i, f, o: sigmoid non linearity, output will be between zero and one. extremes is zero and one, it can be imaged as a vector composed by zero and one.
+- g: tanh non linearity, output will be between minus one and one.
+2. cell state
+- $f*c_{t-1}$: f can be thought as a vector of zeros and ones. So it tells us, for each element in the cell state, do we want to forget that element of the cell in the case if the forget gate was zero? or do we want to remember that element of the cell in the case if the forget gate was one.
+- $i*g$: \
+(1) i is an vector of zeros and ones. So it tells us for each element of the cell state, do we want to write to that element of the cell state in the case that i is one, or do we not want to write to that element of the cell state at this time step in the case that i is zero.
+(2) g is an vector of minus ones and ones, they are candidate value that we might consider writing to each element of the cell state at this time step.
+- **overall, at every time step, inside the cell state, we can either remeber or forget our previoud state and then we can either increment or decrement each element of that cell state by up to one at each time step.**
+3. use updated cell state to compute a hidden state.
+- $tanh(c_t)$: because this cell state has this interpretation of being counters, we want to squash that counter value into a nice zero to one range using a tanh.
+- $o*tanh(c_t)$: o can be though of it as being mostly zeros and ones, and the multiplication tells us for each element of our cell state, do we want to **reveal or not reveal** that element of our cell state when we're computing the external hidden state for this time step.
