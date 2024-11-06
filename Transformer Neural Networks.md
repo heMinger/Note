@@ -112,6 +112,14 @@ writer: lmh
 - when we get the first output word, take it as input and loop.
 - decoder stops when outputs an EOS token.
 
+## Summary
+1. use word embedding to conver words into numbers
+2. positional encoding to keep track of word order
+3. self-attention to keep track of word relationships within the input and output phrases
+4. encoder-decoder attention to keep track of things between the input and output phrase,
+- to make sure that important words in the input are not lost in the translation
+5. residual connections to allow each subunit like self-attention to focus on solving just one part of the problem,
+
 #### Notes
   1. attention could be stacked: no matter where it be used, self-attention or encoder-decoder attention
   2. weight in same attention shared for all words, but different attention got different set of weights.
