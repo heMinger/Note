@@ -52,3 +52,19 @@ focus on how a Transformer neural network can translate a simple English sentenc
 5. Values
 - create two new values to represent words, and scale the values by the result of softmax function.
 - sum the scaled values, if we calculated the similarites between word A with all words, the sum of all scaled words are the **Self-Attention value** for word A.
+6. overall
+![image](https://github.com/user-attachments/assets/f886f4cd-f253-4377-b6d2-ec54ec0e5a1c)
+7. if we calculte the self-attention value of another word, we just need to calculate the corresponding query -> similarities -> softmax function -> sum of scaled values
+8. notes:
+- no matter how many words are input into the Transformer we just reuse the same sets of weights for Self-Attention Queries, Keys and Values.
+- we can calculate the Queries, Keys and Values for each word at the same time -> high parallelism
+9. the reason we build **two new values** to represent the word rather than just take the result of word embedding:
+- self-attention values for each word contain input from all of the other words, and this helps give each word context and this can help establish how each word in the input is related to the others.
+- we think of this unit with its weights for calculating queries keys and values as a self-attention cell -> we can create a stack of self-attention cells each with its own sets of weights to correctly establish how words are related in complicated sentences and paragraphs.
+(1) weigths in self-attention cell could apply to the position encoded values for each word -> to capture different relationships among the words.
+10. Residual Connections
+- take the position encoded values and added them to the self-attention values.
+- makes it easier to train complex neural networks, by allowing the self-attention layer to establish relationships among the input words without having to also preserve the word embedding and positioning coding information.
+- ![image](https://github.com/user-attachments/assets/948cad3e-084e-4a84-b9cb-ceba612cdbbf)
+
+- 
