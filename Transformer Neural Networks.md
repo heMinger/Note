@@ -1,8 +1,8 @@
 [Transformer Neural Networks, ChatGPT's foundation, Clearly Explained!!!](https://www.youtube.com/watch?v=zxQyTK8quyY&t=167s)
 # data: 6/11
-writer: lmh \
+writer: lmh
 
-focus on how a Transformer neural network can translate a simple English sentence into spanish.
+*focus on how a Transformer neural network can translate a simple English sentence into spanish.*
 
 ## word embedding: convert input and output words into numbers
 *caz neural networks usually noly have numbers for input values*
@@ -67,4 +67,10 @@ focus on how a Transformer neural network can translate a simple English sentenc
 - makes it easier to train complex neural networks, by allowing the self-attention layer to establish relationships among the input words without having to also preserve the word embedding and positioning coding information.
 - ![image](https://github.com/user-attachments/assets/948cad3e-084e-4a84-b9cb-ceba612cdbbf)
 
+### features 
+![image](https://github.com/user-attachments/assets/d28fc0e9-1feb-4f10-8ce9-706f38301ce0)
+1. word embedding: encode words into numbers
+2. positional encoding: encode the positions of the words
+3. self-attention: encode the relationship among the words
+4. residual connections: relatively easily and quickly train in parallel.
 - 
