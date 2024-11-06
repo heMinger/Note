@@ -118,7 +118,15 @@ writer: lmh
 3. self-attention to keep track of word relationships within the input and output phrases
 4. encoder-decoder attention to keep track of things between the input and output phrase,
 - to make sure that important words in the input are not lost in the translation
-5. residual connections to allow each subunit like self-attention to focus on solving just one part of the problem,
+5. residual connections to allow each subunit like self-attention to focus on solving just one part of the problem
+![image](https://github.com/user-attachments/assets/3772c55b-1eee-4f8a-b1bf-e12be32edb65)
+
+## extra things
+1. Scaled Dot-Product Attention
+- $Attention(Q, K, V)=softmax(\frac{QK^T}{\sqrt{d_k}})V$
+- helped encode and decode long and complicated phrases.
+2. additional neural networks with hidden layer could add to both the Encoder and Decoder
+- to give Transformer more Weights and Biases to fit to complicated data.
 
 #### Notes
   1. attention could be stacked: no matter where it be used, self-attention or encoder-decoder attention
