@@ -4,6 +4,8 @@ writer: lmh
 
 *focus on how a Transformer neural network can translate a simple English sentence into spanish.*
 
+# Encoder
+
 ## word embedding: convert input and output words into numbers
 *caz neural networks usually noly have numbers for input values*
 
@@ -67,10 +69,50 @@ writer: lmh
 - makes it easier to train complex neural networks, by allowing the self-attention layer to establish relationships among the input words without having to also preserve the word embedding and positioning coding information.
 - ![image](https://github.com/user-attachments/assets/948cad3e-084e-4a84-b9cb-ceba612cdbbf)
 
-### features 
+## features of Transformer 
 ![image](https://github.com/user-attachments/assets/d28fc0e9-1feb-4f10-8ce9-706f38301ce0)
 1. word embedding: encode words into numbers
 2. positional encoding: encode the positions of the words
 3. self-attention: encode the relationship among the words
 4. residual connections: relatively easily and quickly train in parallel.
-- 
+
+# Decoder
+
+1. same processes like encoder, start with <EOS>
+
+## Encoder-Decoder Attention
+**allow Decoder to keep track of the significant words in the input.**
+1. we create two new values to represent the query for the EOS token in the decoder
+- new Query! take the sum of self-attention values and position encoded values as input
+- ![image](https://github.com/user-attachments/assets/4d06e5a2-2bb2-4a1d-b03f-83208429b2c8)
+2. create keys for each word in the encoder
+- new Key! take the sum of self-attention values and position encoded values as input
+- ![image](https://github.com/user-attachments/assets/b3b324cd-a916-4555-85bc-41963dce0b6e)
+3. calculate similarities between the EOS token in the decoder and each words in the encoder
+- cause we want to find the influnce(significance) of words in encoder with current word(EOS token) in decoder.
+- calculate similarities by dot product
+- then run similarities through a softmax function
+- ![image](https://github.com/user-attachments/assets/53dcca1c-87c4-4c76-8da1-3f7471a41fce)
+- then we get the percentage of each input word to use when Decoder determines what should be the first tanslates word.
+4. then we calculate Value for each input word
+- and scale those Values by the SoftMax percentages
+- and then add the pairs of scaled values together to get the Encoder-Decoder Attention values.
+- ![image](https://github.com/user-attachments/assets/a48b9b60-90a7-44a5-b368-143fc9046835)
+5. Residual Connections
+- allow Encoder-Decoder Attention to focus on relationships between the output words and the input, without having to preserve the Self-Attention or Word and Position Encoding that happened earlier.
+- ![image](https://github.com/user-attachments/assets/f0ad0c80-7b4e-428e-9bb4-4f9ae1ec698d)
+
+6. Fully Connected Network
+- take these two values that represent the EOS token in the decoder and select one from vocabulary.
+- FCN got four values(in this case, we have "ir", "vamos", "y", "<EOS>"),
+- and run softmax function to select first output word.
+- ![image](https://github.com/user-attachments/assets/b3be2f0b-dbf4-4799-8e6f-91c5f458ea63)
+
+7. circul
+- when we get the first output word, take it as input and loop.
+- decoder stops when outputs an EOS token.
+
+#### Notes
+  1. attention could be stacked: no matter where it be used, self-attention or encoder-decoder attention
+  2. weight in same attention shared for all words, but different attention got different set of weights.
+
