@@ -29,4 +29,8 @@ predict joint positions
 2. region proposal
 - selective search: find "blobby" image regions that are likely to contain objects.
 - get proposal regions -> classify
-3. 
+R-CNN -> fast R-CNN -> faster R-CNN;
+YOLO & SSD
+## Instance segmentation
+
+### Mask R CNN
