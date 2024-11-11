@@ -11,3 +11,12 @@ writer: MingheLi
 
 ## visualize the inside of networks
 ### first layer
+1. convolutional filters gets slide over input image, and take inner products
+2. simply visualize the learned weights of filters as images themselves.
+- for 11*11\*3 filters, just visualize that filter as a 11 * 11 image with 3 channels.
+- intuition comes from template matching and inner products: the input which maximize the activation under a norm constraint on the input is exactly when those two vectors match up.
+### medium layer
+1. example: 16*7\*7: visualized as 16 7*7 gray image
+### last layer
+1. nearest neighbors
+2. 
