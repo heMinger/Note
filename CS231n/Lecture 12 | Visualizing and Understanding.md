@@ -18,5 +18,8 @@ writer: MingheLi
 ### medium layer
 1. example: 16*7\*7: visualized as 16 7*7 gray image
 ### last layer
-1. nearest neighbors
-2. 
+1. compute **nearest neighbors** according to 4096 dimensional vector which is computed by FCN.
+2. **dimensionality reduction**:
+- t-SNE(t-distributed stochastic neighbor embeddings): 
+3. 
+ 
