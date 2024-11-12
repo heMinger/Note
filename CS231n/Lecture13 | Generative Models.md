@@ -70,4 +70,21 @@ writer: MingheLi
 2. intuition: z is some vector capturing how little or how much of factor of variation that we have in out training data.
 3. generation process: sample from a prior over Z, and generate our data X by sampling from a conditional distribution P of X given z.
 - sample z first, sample a value for each of latent factors and then we'll use that and sample our image x from here.
-4. 
+4. can't optimize directly, derive and optimize lower bound on likelihood instead
+5. too mathematical😥😥
+## GAN
+1. don't work with any explicit density function. take game-theoretic approach: learn to generate from training distribution through 2-player game
+2. Q: what can we use to represent this complex transformation?
+A: A neural network! **when we want to model some kind of complex function or transformation we use a neural network.**
+3. training:
+- Generator network: try to fool the discriminator by generating real-looking images
+- discriminator network: try to distinguish between real and fake images.
+- minimax objective function: ![image](https://github.com/user-attachments/assets/c9433c16-b600-4f0b-9ff2-3257d865ca06)
+- ![image](https://github.com/user-attachments/assets/cfe82fb2-8caf-4cbf-9282-5ecef0ec4ad4)
+4. generator objective doesn't work that well in practice
+- the reason is we have to look at the loss landscape
+- ![image](https://github.com/user-attachments/assets/7e818e22-8f25-4f71-b08c-a78373117970)
+- slope of this loss is going to be higher towards the right. (x axis closer to 1, graident is larger)
+- when our generator is doing a good job of fooling the discriminator, D(G(z)) is close to one, we got a higher gradient
+- when our generator generate some bad samples, D(G(z)) is close to zero region on the X axis, got a relative flat gradient.
+- so, gradient signal is dominated by region where the sample is already pretty good. which is bad.
