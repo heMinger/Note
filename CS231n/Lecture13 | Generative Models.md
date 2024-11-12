@@ -88,3 +88,9 @@ A: A neural network! **when we want to model some kind of complex function or tr
 - when our generator is doing a good job of fooling the discriminator, D(G(z)) is close to one, we got a higher gradient
 - when our generator generate some bad samples, D(G(z)) is close to zero region on the X axis, got a relative flat gradient.
 - so, gradient signal is dominated by region where the sample is already pretty good. which is bad.
+5. modify
+- ![image](https://github.com/user-attachments/assets/0e33537f-deb9-466f-8b79-e84fa83bcff0)
+- new objective: ![image](https://github.com/user-attachments/assets/3683cb2e-5d1f-4f66-bc25-42633929040b)
+- 
+
+
