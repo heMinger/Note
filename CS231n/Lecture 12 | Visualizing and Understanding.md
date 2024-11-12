@@ -73,3 +73,24 @@ writer: MingheLi
 2. influence: amplify existing features that we detected by the network in this image
 - 'caz whatever features existed on that layer now we set the gradient equal to the feature, and we just tell the network to amplify whatever features you already saw in that image.
 - gradient descent just to aprroximate the gradient.
+
+random is creativity!!!
+
+### feature inversion
+1. take image -> run through the network -> get feature -> reconstruct image by feature. so that could give information about the image was captured in that feature vector.
+
+### texture synthesis
+1. nearest neighbor: generate pixels one at a time in scanline order, from neighborhood of already generated pixels and copy nearest neighbor from input.
+2. neural texture synthesis: compute feature of image and use this features to computer a descriptor of the texture of this input image.
+- **gram matrix**: pick out two different columns in the input volume, each column is C-dimensional vector, and take outer product between those two vectors to get C*C matrix.
+(1) tells us about the co-occurrance of different features at two points in the image.\
+(2) efficient to compute, and more efficient than variance matrix.
+- reconstruct this gram matrix texture descriptor of the input image(random initialized.)
+
+### Neural Style Transfer
+combination of texture synthesis and feature inverison
+
+```diff
++ In some sense, some of these techinics just change the loss function of CNN or the gradient.
+so, what else we could change or combine of CNN?
+```
