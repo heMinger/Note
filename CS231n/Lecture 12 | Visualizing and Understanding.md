@@ -46,3 +46,30 @@ writer: MingheLi
 ### Saliency Maps
 1. relative simple idea: compute the gradient of the predicted class score with the respect to the pixels of the input image.
 2. idea: for each pixel in the input image, if we wiggle it a little bit, how much will the classification score for the class change
+### intermediate features via (guided) backprop
+1. compute the gradient of some intermediate value in the network with the respect to the pixels of the image.
+
+### Gradient Ascent
+1. answer the question: remove this reliance on some input image, then just ask what type of input in general would cause this neuron to activate
+2. we want to fix the weight of out trained network and synthesizing image by performing gradient ascent on the pixels of the image to try and maximize the score of some intermediate neuron of some class.
+3. regularization term: prevent the pixels of our generated image from over fitting to the peculiarities of that particular network.
+4. want a generated image of two properties:
+- maximally activate some score or some neuron value
+- image look like a natural image, have the kind of statistics that we typically see in natural images.(function of regularization term)
+
+### fooling images/ adversarial examples
+1. starts from an arbitraty image
+2. pick an arbitraty class
+3. modify the image to maximize the calss
+4. repeat until netwrok is fooled
+5. so the result is, network and recognize an elephant image as koala.
+
+### DeepDream: Amplify existing features
+1. steps
+- forward: compute activations at chosen layer.
+- set gradient of chosen layer to its activation
+- backword: compute gradient on image
+- update image
+2. influence: amplify existing features that we detected by the network in this image
+- 'caz whatever features existed on that layer now we set the gradient equal to the feature, and we just tell the network to amplify whatever features you already saw in that image.
+- gradient descent just to aprroximate the gradient.
