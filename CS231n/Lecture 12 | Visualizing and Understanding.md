@@ -9,7 +9,8 @@ writer: MingheLi
 3. object detection: **fixed category of labels but various number of objects**.
 4. instance segmentation
 
-## visualize the inside of networks
+visualize the inside of networks
+## Activations
 ### first layer
 1. convolutional filters gets slide over input image, and take inner products
 2. simply visualize the learned weights of filters as images themselves.
@@ -43,6 +44,7 @@ writer: MingheLi
 - draw a heat map show what predicted probability output from network.
 3. idea: when we block out some part of the image, if that causes the network score to change drastically, then probably that part of the input image was really important for the classification decision.
 
+## Gradients
 ### Saliency Maps
 1. relative simple idea: compute the gradient of the predicted class score with the respect to the pixels of the input image.
 2. idea: for each pixel in the input image, if we wiggle it a little bit, how much will the classification score for the class change
@@ -64,6 +66,7 @@ writer: MingheLi
 4. repeat until netwrok is fooled
 5. so the result is, network and recognize an elephant image as koala.
 
+## Fun
 ### DeepDream: Amplify existing features
 1. steps
 - forward: compute activations at chosen layer.
@@ -89,7 +92,13 @@ random is creativity!!!
 
 ### Neural Style Transfer
 combination of texture synthesis and feature inverison
+1. problem: style transfer requires many forward/backward passes through VGG; very slow!
+2. solution: train another neural network to perform style transfer for us!
 
+## Summary
+1. Activations: nearest neighbors, dimensionality reduction, maximal patches, occlusion
+2. GradientsL saliency maps, class visualization, fooling images, feature inversion
+3. fun: deepdream, style transfer
 ```diff
 + In some sense, some of these techinics just change the loss function of CNN or the gradient.
 so, what else we could change or combine of CNN?
