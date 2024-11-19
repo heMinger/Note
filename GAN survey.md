@@ -15,6 +15,7 @@
 [Deep Generative Image Models using a Laplacian Pyramid of Adversarial Networks](https://arxiv.org/pdf/1506.05751)
 3. text to image synthesis
 [Generative Adversarial Text to Image Synthesis](https://arxiv.org/pdf/1605.05396)
-4. 
-5. 
-[introduction neptune](https://neptune.ai/blog/generative-adversarial-networks-gan-applications)
+
+- - - - - 
+
+[introduction of GAN neptune](https://neptune.ai/blog/generative-adversarial-networks-gan-applications)
