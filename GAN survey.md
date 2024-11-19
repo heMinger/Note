@@ -17,3 +17,4 @@
 [Generative Adversarial Text to Image Synthesis](https://arxiv.org/pdf/1605.05396)
 4. 
 5. 
+[introduction neptune](https://neptune.ai/blog/generative-adversarial-networks-gan-applications)
