@@ -3,8 +3,9 @@
 
 ## Variants
 1. Conditional Generative Adversarial Nets
-[CGAN](https://arxiv.org/pdf/1411.1784)
-[Image-to-Image Translation with Conditional Adversarial Networks](https://arxiv.org/pdf/1611.07004)
+- [CGAN](https://arxiv.org/pdf/1411.1784)
+- [Image-to-Image Translation with Conditional Adversarial Networks](https://arxiv.org/pdf/1611.07004)
+- [Cycle GAN](https://arxiv.org/pdf/1703.10593)
 3. 
 
 ## Application
