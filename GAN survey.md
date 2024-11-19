@@ -9,5 +9,9 @@
 ## Application
 1. single image super resolution
 [SRGAN](https://arxiv.org/pdf/1609.04802)
-2. 
-3. 
+2. deep image generate
+[Deep Generative Image Models using a Laplacian Pyramid of Adversarial Networks](https://arxiv.org/pdf/1506.05751)
+3. text to image synthesis
+[Generative Adversarial Text to Image Synthesis](https://arxiv.org/pdf/1605.05396)
+4. 
+5. 
