@@ -10,7 +10,7 @@ Justin Johnson; ..
 - perceptual loss functions + feed-forward networks \
   
 $\color{red}{\textit questions}$
-1. generative model?
+1. generative model? (我执着于判断这是不是生成式模型是因为CycleGAN说它是生成式模型)
 
 ## Introduction
 1. method1: feed-forward netword + per-pixel loss
@@ -23,3 +23,13 @@ $\color{red}{\textit questions}$
 - combine the benefits of these two approaches
 - train **feed-forward transformation networks** for **image transformation** tasks.
 - using perceptual loss functions
+
+## Related Work
+### Feed-forward image transformation
+1. get inspiration and use, in-network downsampling + upsampling
+- downsampling: reduce the spatial extent of feature maps
+- upsampling: produce the final output image
+2. 
+
+$\color{red}{\textit questions}$
+1. downsampling+upsampling $\ne$ generative 
