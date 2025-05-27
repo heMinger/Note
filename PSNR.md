@@ -8,6 +8,12 @@ $$
 \text{PSNR} = 10 \cdot \log_{10} \left( \frac{MAX_I^2}{\text{MSE}} \right)
 $$
 
+$$MAX_I^2$$ 代表了峰值信号，也就是signal, MSE代表了Error，对应PSNR中的signal-to-noise
+
+$$
+\text{PSNR} = 10 \cdot \log_{10} \left( \frac{MAX_I^2}{\text{MSE}} \right)
+$$
+
 ## 分析
 1. MSE越小，PSNR越大，表示图像越接近原始图像
 2. 通常PSNR在30-50 dB区间，越高越好
