@@ -1,5 +1,5 @@
 [Transformer Neural Networks, ChatGPT's foundation, Clearly Explained!!!](https://www.youtube.com/watch?v=zxQyTK8quyY&t=167s)
-# data: 6/11
+# data: 24/6/11
 writer: lmh
 
 *focus on how a Transformer neural network can translate a simple English sentence into spanish.*
